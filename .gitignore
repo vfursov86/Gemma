@@ -3,3 +3,6 @@ Models/
 
 # Ignore Python virtual environments
 Venvs/
+
+# Ignore Python virtual environments
+Memory/
