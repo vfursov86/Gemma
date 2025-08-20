@@ -6,3 +6,8 @@ Venvs/
 
 # Ignore Python virtual environments
 Memory/
+
+# Ignore planning description
+Architecture_and_deployment.txt
+constructionPlan.txt
+constructionPlan.txt
