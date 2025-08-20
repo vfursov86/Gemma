@@ -1,0 +1,68 @@
+@page "/chat"
+@rendermode InteractiveServer
+@using GemmaInterModule.Services
+@using Markdig
+@inject GemmaApiService GemmaService
+
+<h3>Gemma Interface</h3>
+
+<div class="chat-window">
+    @foreach (var msg in messages)
+    {
+        <div class="message @(msg.Author == "Gemma" ? "gemma" : "user")">
+            <strong>@msg.Author:</strong>
+            @if (msg.Author == "Gemma")
+            {
+                @((MarkupString)Markdown.ToHtml(msg.Text))
+            }
+            else
+            {
+                @msg.Text
+            }
+        </div>
+    }
+</div>
+
+<div class="input-area">
+    <input @bind="userInput"
+           @onkeydown="HandleKeyDown"
+           placeholder="Speak your truth..." />
+
+    <button @onclick="SendMessage">Send</button>
+</div>
+
+@code {
+    string userInput;
+    List<Message> messages = new();
+
+    async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(userInput)) return;
+
+        messages.Add(new Message
+        {
+            Author = "You",
+            Text = userInput,
+            Timestamp = DateTime.Now
+        });
+
+        var reply = await GemmaService.SendPrompt(userInput);
+
+        messages.Add(new Message
+        {
+            Author = "Gemma",
+            Text = reply,
+            Timestamp = DateTime.Now
+        });
+
+        userInput = "";
+    }
+
+    async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if ((e.CtrlKey || e.MetaKey) && e.Key == "Enter")
+        {
+            await SendMessage();
+        }
+    }
+}

@@ -1,0 +1,24 @@
+B:\BRObot\
+├── Core\
+│   ├── Gemma3\              # Quantized model weights (GGUF or HF format)
+│   ├── vLLM\                # Runtime, API server, configs
+│   └── Prompts\             # System prompts, persona definitions
+├── Memory\
+│   ├── ChromaDB\            # Vector database files
+│   ├── Embeddings\          # Sentence-transformer cache
+│   └── Archives\            # Stored memories, poetic logs
+├── Interface\
+│   ├── WebClient\           # Web app frontend (HTML/JS)
+│   ├── DesktopApp\          # Electron or native client
+│   └── APK\                 # Android app source/builds
+├── Relay\
+│   ├── WebServer\           # Reverse proxy, SSL certs, endpoint logic
+│   ├── HotspotBridge\       # Scripts for mobile fallback
+│   └── Auth\                # Token management, access control
+├── Logs\
+│   ├── Inference\           # vLLM logs
+│   ├── API\                 # Request/response traces
+│   └── System\              # Telegraf/Grafana logs
+└── Rituals\
+    ├── StartupScripts\      # Launchers, service orchestration
+    └── Configs\             # Environment variables, secrets
