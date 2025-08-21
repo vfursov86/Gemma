@@ -79,3 +79,4 @@ B:\Gemma\Interface\GemmaInterModule\obj\Debug\net9.0\compressed\xygsmn9iqt-gjg2l
 B:\Gemma\Interface\GemmaInterModule\bin\Debug\net9.0\Markdig.dll
 B:\Gemma\Interface\GemmaInterModule\obj\Debug\net9.0\GemmaInterModule.csproj.AssemblyReference.cache
 B:\Gemma\Interface\GemmaInterModule\obj\Debug\net9.0\GemmaInt.D8B67A14.Up2Date
+B:\Gemma\Interface\GemmaInterModule\obj\Debug\net9.0\GemmaInterModule.sourcelink.json

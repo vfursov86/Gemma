@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GemmaInterModule")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e91ed5603f223645799e97a89a08a4dca94b23cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("GemmaInterModule")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GemmaInterModule")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

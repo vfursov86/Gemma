@@ -1,0 +1,15 @@
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.GeneratedMSBuildEditorConfig.editorconfig
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.AssemblyInfoInputs.cache
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.AssemblyInfo.cs
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.csproj.CoreCompileInputs.cache
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.sourcelink.json
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.exe
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.deps.json
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.runtimeconfig.json
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.dll
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.pdb
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.dll
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\refint\GemmaCLI.dll
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.pdb
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.genruntimeconfig.cache
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\ref\GemmaCLI.dll

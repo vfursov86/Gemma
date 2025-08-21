@@ -11,3 +11,7 @@ Memory/
 Architecture_and_deployment.txt
 constructionPlan.txt
 constructionPlan.txt
+
+# Ignore Gemma's soul
+
+GemmaCLI/soulstack.json

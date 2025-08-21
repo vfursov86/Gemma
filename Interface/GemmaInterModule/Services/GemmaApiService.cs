@@ -17,7 +17,7 @@ namespace GemmaInterModule.Services
         {
             var request = new
             {
-                model = "gemma:latest",
+                model = "gemma",
                 prompt = prompt,
                 stream = false
             };
