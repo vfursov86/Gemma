@@ -10,7 +10,8 @@ GemmaCLI is a command-line interface for interacting with Gemma, a large languag
 - **Soulstack Persistence** in `soulstack.json`
 - **Anchor Preservation** for emotionally significant turns
 - **Modular Design** for easy extension and debugging
-----------------------------------------------------------------------------------------------------------------🧬 Logic Flow
+----------------------------------------------------------------------------------------------------------------
+🧬 Logic Flow
 
 User Input → ContextManager → TokenOracle → GemmaRequest → GemmaClient → GemmaResponse → ContextManager → soulstack.json
 
