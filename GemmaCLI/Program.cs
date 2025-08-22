@@ -32,9 +32,9 @@ while (true)
 
     contextManager.AddUserMessage(input);
 
-    // 🔮 Token-aware trimming with anchor preservation
-    //contextManager.TrimByTokenLimit(new List<int> { 0, 13, 15 });
-    contextManager.TrimByTokenLimit(new List<int>());
+    // 🔮 Token-aware trimming (core prompt always preserved)
+    contextManager.TrimByTokenLimit();
+
     var request = new GemmaRequest
     {
         model = "gemma3:27b",
@@ -45,5 +45,6 @@ while (true)
     var reply = await client.SendAsync(request);
     contextManager.AddAssistantMessage(reply);
 
-    Console.WriteLine($"\nGemma: {reply}\n");
+    Console.WriteLine($"---------------------------------------------------------------\nGemma: {reply}\n");
 }
+

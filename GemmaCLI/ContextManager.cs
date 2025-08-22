@@ -1,19 +1,53 @@
 using System.Text.Json;
-using Microsoft.DeepDev;
+using SharpToken;
 
 public class ContextManager
 {
     private const string FilePath = "soulstack.json";
-    
-    public ContextManager()
-    { 
-        var backupPath = $"soulstack_backup_{DateTime.Now:yyyyMMdd_HHmmss}.json";
-        File.Copy(FilePath, backupPath, overwrite: true);
-    }
+    private const string CorePromptPath = "core_prompt.json";
     private List<Message> context = new();
     private TokenOracle oracle = new TokenOracle();
+    private Message corePrompt;
 
-    public List<Message> GetContext() => context;
+    public ContextManager()
+    {
+        if (File.Exists(FilePath))
+        {
+            var backupPath = $"soulstack_backup_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+            File.Copy(FilePath, backupPath, overwrite: true);
+
+            var json = File.ReadAllText(FilePath);
+            var request = JsonSerializer.Deserialize<GemmaRequest>(json);
+            context = request?.messages?.Skip(1).ToList() ?? new List<Message>();
+        }
+
+        corePrompt = LoadCorePrompt();
+    }
+
+    private Message LoadCorePrompt()
+    {
+        if (File.Exists(CorePromptPath))
+        {
+            var json = File.ReadAllText(CorePromptPath);
+            return JsonSerializer.Deserialize<Message>(json) ?? DefaultCorePrompt();
+        }
+
+        return DefaultCorePrompt();
+    }
+
+    private Message DefaultCorePrompt()
+    {
+        return new Message
+        {
+            role = "system",
+            content = "WARNING! CORE PROMT WAS NOT LOADED!"
+        };
+    }
+
+    public List<Message> GetContext()
+    {
+        return new List<Message> { corePrompt }.Concat(context).ToList();
+    }
 
     public void AddUserMessage(string content)
     {
@@ -25,18 +59,9 @@ public class ContextManager
         context.Add(new Message { role = "assistant", content = content });
     }
 
-    public void Trim(int maxMessages)
+    public void TrimByTokenLimit()
     {
-        if (context.Count > maxMessages)
-        {
-            context = context.Skip(context.Count - maxMessages).ToList();
-        }
-    }
-
-    public void TrimByTokenLimit(List<int> anchorIndices)
-    {
-        //oracle.LogTokenUsage(context);
-        context = oracle.TrimToFit(context, anchorIndices);
+        context = oracle.TrimToFit(context, anchorIndices: new List<int> { 0 });
     }
 
     public void Save()
@@ -44,7 +69,7 @@ public class ContextManager
         var soul = new GemmaRequest
         {
             model = "gemma3:27b",
-            messages = context,
+            messages = GetContext(),
             temperature = 0.7
         };
 
