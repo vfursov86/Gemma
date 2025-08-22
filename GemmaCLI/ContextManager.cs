@@ -61,6 +61,7 @@ public class ContextManager
 
     public void TrimByTokenLimit()
     {
+        //oracle.LogTokenUsage(context);
         context = oracle.TrimToFit(context, anchorIndices: new List<int> { 0 });
     }
 
