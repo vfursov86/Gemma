@@ -1,19 +1,17 @@
 using System.Text.Json;
+using Microsoft.DeepDev;
 
 public class ContextManager
 {
     private const string FilePath = "soulstack.json";
-    private List<Message> context = new();
-
+    
     public ContextManager()
-    {
-        if (File.Exists(FilePath))
-        {
-            var json = File.ReadAllText(FilePath);
-            var request = JsonSerializer.Deserialize<GemmaRequest>(json);
-            context = request?.messages ?? new List<Message>();
-        }
+    { 
+        var backupPath = $"soulstack_backup_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+        File.Copy(FilePath, backupPath, overwrite: true);
     }
+    private List<Message> context = new();
+    private TokenOracle oracle = new TokenOracle();
 
     public List<Message> GetContext() => context;
 
@@ -33,6 +31,12 @@ public class ContextManager
         {
             context = context.Skip(context.Count - maxMessages).ToList();
         }
+    }
+
+    public void TrimByTokenLimit(List<int> anchorIndices)
+    {
+        //oracle.LogTokenUsage(context);
+        context = oracle.TrimToFit(context, anchorIndices);
     }
 
     public void Save()

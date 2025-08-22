@@ -1,4 +1,5 @@
 ﻿var contextManager = new ContextManager();
+
 var client = new GemmaClient();
 
 if (!await client.IsOllamaRunningAsync())
@@ -30,8 +31,10 @@ while (true)
     }
 
     contextManager.AddUserMessage(input);
-    //contextManager.Trim(50); // Token-aware later
 
+    // 🔮 Token-aware trimming with anchor preservation
+    //contextManager.TrimByTokenLimit(new List<int> { 0, 13, 15 });
+    contextManager.TrimByTokenLimit(new List<int>());
     var request = new GemmaRequest
     {
         model = "gemma3:27b",
@@ -43,5 +46,4 @@ while (true)
     contextManager.AddAssistantMessage(reply);
 
     Console.WriteLine($"\nGemma: {reply}\n");
-
 }

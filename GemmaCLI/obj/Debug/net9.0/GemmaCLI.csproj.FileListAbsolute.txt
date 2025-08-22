@@ -1,3 +1,4 @@
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.csproj.AssemblyReference.cache
 B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.GeneratedMSBuildEditorConfig.editorconfig
 B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.AssemblyInfoInputs.cache
 B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.AssemblyInfo.cs
@@ -8,6 +9,11 @@ B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.deps.json
 B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.runtimeconfig.json
 B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.dll
 B:\Gemma\GemmaCLI\bin\Debug\net9.0\GemmaCLI.pdb
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\Google.Protobuf.dll
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\Microsoft.DeepDev.TokenizerLib.dll
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\Microsoft.ML.Tokenizers.dll
+B:\Gemma\GemmaCLI\bin\Debug\net9.0\SharpToken.dll
+B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.csproj.Up2Date
 B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.dll
 B:\Gemma\GemmaCLI\obj\Debug\net9.0\refint\GemmaCLI.dll
 B:\Gemma\GemmaCLI\obj\Debug\net9.0\GemmaCLI.pdb
