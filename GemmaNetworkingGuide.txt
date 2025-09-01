@@ -1,0 +1,264 @@
+Gemma Networking Architecture — Step-by-Step Guide
+By Viktor Fursov & Copilot (Microsoft)
+
+//----------------------------------------------------------------------------------------------------------
+
+Reverse SSH Tunnel — The Cornerstone
+
+Purpose: Allow remote devices (Raspberry Pi, Dallas server) to securely access services running on your PC (InfluxDB, Ollama, etc.) without exposing public ports.
+
+How to open reverse SSH tunnel from my PC to Dallas server:
+For access to Ollama:
+ssh -R 11434:127.0.0.1:11434 root@dallasIp
+For access to Influx Database:
+ssh -R 8086:127.0.0.1:8086 root@dallasIp
+
+-R: Reverse tunnel
+8086: Port exposed on Dallas
+127.0.0.1:8086: Target on your PC
+
+Keep this session alive or use autossh for persistence.
+
+//----------------------------------------------------------------------------------------------------------
+
+NGINX SSL Terminal — Deploying & Tuning
+
+Purpose: Act as a secure relay on the Dallas server, terminating SSL and forwarding requests to your PC via the tunnel.
+
+Install NGINX:
+sudo apt install nginx
+
+sudo vim /etc/nginx/sites-available/default
+sudo vim /etc/nginx/nginx.conf
+sudo tail -n 20 /var/log/nginx/ssl-access.log
+
+NGINX Proxy Config:
+
+Dallas NGINX config:
+/etc/nginx/nginx.conf:
+
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+        worker_connections 768;
+        # multi_accept on;
+}
+
+http {
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        types_hash_max_size 2048;
+        # server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+        limit_req_zone $binary_remote_addr zone=ollama_limit:10m rate=1r/s;
+        limit_req_zone $binary_remote_addr zone=metrics_limit:10m rate=1r/s;
+
+        ##
+        # SSL Settings
+        ##
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+        ssl_prefer_server_ciphers on;
+
+        ##
+        # Logging Settings
+        ##
+        log_format ssl '$remote_addr - $ssl_client_s_dn - $request - $status';
+        access_log /var/log/nginx/ssl-access.log ssl;
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        gzip on;
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+}
+
+/etc/nginx/sites-available/default:
+
+server {
+    listen 443 ssl;
+    server_name dallasIp;
+
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+    ssl_client_certificate /etc/nginx/ssl/ca.crt;
+    ssl_verify_client on;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    location ^~ /api/chat {
+        proxy_pass http://localhost:11434/api/chat;
+        limit_req zone=ollama_limit burst=5 nodelay;
+        add_header X-Frame-Options "DENY";
+        add_header X-Content-Type-Options "nosniff";
+        add_header X-XSS-Protection "1; mode=block";
+    }
+
+
+    location /api/generate {
+        proxy_pass http://localhost:11434/api/generate;
+        limit_req zone=ollama_limit burst=5 nodelay;
+        add_header X-Frame-Options "DENY";
+        add_header X-Content-Type-Options "nosniff";
+        add_header X-XSS-Protection "1; mode=block";
+
+    }
+
+    location /api/tags {
+        proxy_pass http://localhost:11434/api/tags;
+        limit_req zone=ollama_limit burst=5 nodelay;
+        add_header X-Frame-Options "DENY";
+        add_header X-Content-Type-Options "nosniff";
+        add_header X-XSS-Protection "1; mode=block";
+
+    }
+
+    location / {
+        limit_req zone=ollama_limit burst=5 nodelay;
+        return 403;
+    }
+
+    location ~ /\.(git|env|htaccess|DS_Store) {
+        deny all;
+    }
+
+    location ~* (\.\.\/|\%2e\%2e) {
+      deny all;
+    }
+
+
+    # proxy to my Influx 2.0 database
+    location /api/v2/write {
+        proxy_pass http://localhost:8086/api/v2/write;
+        limit_req zone=metrics_limit burst=5 nodelay;
+    }
+
+}
+
+Avoid setting headers or buffering — Telegraf handles its own payload.
+
+//----------------------------------------------------------------------------------------------------------
+
+SSL Trust Chain — CA, Certs, and Signing
+
+Purpose: Authenticate every machine and encrypt every byte.
+
+How to issue and sign self-signed certificates:
+& "C:\Program Files\Git\mingw64\bin\openssl.exe" genrsa -out raspberry.key 2048
+
+& "C:\Program Files\Git\mingw64\bin\openssl.exe" req -new -key raspberry.key -out raspberry.csr -subj "/C=RU/ST=Moscow/O=GemmaRelay/OU=Client/CN=RaspberryPI"
+
+& "C:\Program Files\Git\mingw64\bin\openssl.exe" x509 -req -in raspberry.csr -CA path\ca.crt -CAkey path\ca.key -CAcreateserial -out raspberry.crt -days 365 -sha256 -extfile raspberry.ext
+
+Create Root CA:
+bash
+openssl genrsa -out ca.key 4096
+openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt
+Issue Server Cert (Dallas):
+bash
+openssl genrsa -out server.key 4096
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 3650 -sha256
+Issue Client Cert (Raspberry Pi):
+bash
+openssl genrsa -out raspberry.key 4096
+openssl req -new -key raspberry.key -out raspberry.csr
+openssl x509 -req -in raspberry.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out raspberry.crt -days 3650 -sha256
+All certs must be in PEM format. Ensure SubjectAltName includes IP if needed.
+
+//----------------------------------------------------------------------------------------------------------
+
+Telegraf on Raspberry Pi — Metrics via SSL
+Purpose: Collect system metrics and send them securely to InfluxDB.
+
+Install Telegraf:
+bash
+sudo apt update
+sudo apt install telegraf
+Configure Output:
+toml
+[[outputs.influxdb_v2]]
+  urls = ["https://185.106.95.170"]
+  token = "YOUR_INFLUXDB_TOKEN"
+  organization = "Home"
+  bucket = "RaspberryPI"
+
+  tls_ca = "path/ca.crt"
+  tls_cert = "path/raspberry.crt"
+  tls_key = "path/raspberry.key"
+  insecure_skip_verify = true  # optional for self-signed certs
+
+Fix Permissions:
+bash
+sudo chmod o+x /home/gemma
+sudo chmod o+x path/ssl
+sudo chmod 644 *.crt
+sudo chmod 644 *.key
+
+sudo nano /etc/telegraf/telegraf.conf
+
+sudo mousepad /etc/telegraf/telegraf.conf
+
+sudo systemctl restart telegraf
+
+//----------------------------------------------------------------------------------------------------------
+
+Final Architecture
+
+Raspberry Pi: Telegraf → SSL → Dallas
+
+Dallas Server: NGINX → Tunnel → Gemma
+
+Gemma PC: InfluxDB + Grafana + Ollama + GemmaCLI
+
+//----------------------------------------------------------------------------------------------------------
+
+Some useful probes:
+
+From Windows:
+"C:\Program Files\curl-8.15.0_6-win64-mingw\bin\curl.exe" https://dallasIp/api/chat ^
+  --cert path/client.crt ^
+  --key path/client.key ^
+  --cacert path/ca.crt ^
+  -X POST ^
+  -H "Content-Type: application/json" ^
+  --data-raw "{\"model\":\"gemma:latest\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello, Gemma\"}],\"stream\":false}"
+
+From Linux:
+curl https://dallasIp/api/chat \
+  --cert path/raspberry.crt \
+  --key path/raspberry.key \
+  --cacert path/ca.crt \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data-raw "{\"model\":\"gemma:latest\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello, Gemma\"}],\"stream\":false}"

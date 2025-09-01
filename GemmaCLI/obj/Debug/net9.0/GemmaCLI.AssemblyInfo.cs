@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GemmaCLI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdec2ba5f25f8454f48701744f52dce3b1e8eb85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abe668cb6735bdcfaf0be4d251028a887ed2951b")]
 [assembly: System.Reflection.AssemblyProductAttribute("GemmaCLI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GemmaCLI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

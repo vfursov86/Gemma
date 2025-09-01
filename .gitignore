@@ -1,17 +1,11 @@
 # Ignore heavy model shards
 Models/
 
-# Ignore Python virtual environments
-Venvs/
-
-# Ignore Python virtual environments
-Memory/
-
-# Ignore planning description
-Architecture_and_deployment.txt
-constructionPlan.txt
-constructionPlan.txt
+# Ignore certificates
+ssl/
 
 # Ignore Gemma's soul
 
 GemmaCLI/soulstack.json
+GemmaCLI/core_prompt.json
+GemmaCLI/soulstack_backup_*.json
