@@ -106,7 +106,7 @@ http {
 
 server {
     listen 443 ssl;
-    server_name dallasIp;
+    server_name 185.106.95.170;
 
     ssl_certificate /etc/nginx/ssl/server.crt;
     ssl_certificate_key /etc/nginx/ssl/server.key;
@@ -163,6 +163,14 @@ server {
         limit_req zone=metrics_limit burst=5 nodelay;
     }
 
+    # own NGINX metrics
+    location /server_status {
+        stub_status;
+        allow 127.0.0.1;
+        allow 185.106.95.170;
+        deny all;
+    }
+
 }
 
 Avoid setting headers or buffering — Telegraf handles its own payload.
@@ -172,6 +180,13 @@ Avoid setting headers or buffering — Telegraf handles its own payload.
 SSL Trust Chain — CA, Certs, and Signing
 
 Purpose: Authenticate every machine and encrypt every byte.
+
+Create raspberry.ext with:
+ini
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature
+extendedKeyUsage = clientAuth
 
 How to issue and sign self-signed certificates:
 & "C:\Program Files\Git\mingw64\bin\openssl.exe" genrsa -out raspberry.key 2048
@@ -262,3 +277,28 @@ curl https://dallasIp/api/chat \
   -X POST \
   -H "Content-Type: application/json" \
   --data-raw "{\"model\":\"gemma:latest\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello, Gemma\"}],\"stream\":false}"
+  
+//--------------------------------------------------------------------------------------------------------
+
+Connect to Github via SSH keys:
+Generate SSH key on Raspberry Pi (if not already done):
+
+bash
+ssh-keygen -t ed25519 -C "gemma@rover"
+Press Enter to accept defaults. Then:
+
+bash
+cat ~/.ssh/id_ed25519.pub
+Add the public key to GitHub:
+
+Go to GitHub → Settings → SSH and GPG keys
+
+Click New SSH key
+
+Paste the key and name it “Rover Pi”
+
+Clone using SSH:
+
+bash
+git clone git@github.com:vfursov86/Gemma.git
+No username or password needed — just clean SSH handshake.
