@@ -302,3 +302,9 @@ Clone using SSH:
 bash
 git clone git@github.com:vfursov86/Gemma.git
 No username or password needed — just clean SSH handshake.
+
+git pull origin master
+echo "# Test commit from $(hostname)" >> README.md
+git add README.md
+git commit -m "Test commit from $(hostname)"
+git push origin master
