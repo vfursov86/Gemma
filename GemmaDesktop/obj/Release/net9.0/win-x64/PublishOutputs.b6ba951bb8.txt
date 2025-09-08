@@ -1,6 +1,0 @@
-B:\Gemma\GemmaDesktop\release\windows\GemmaDesktop.pdb
-B:\Gemma\GemmaDesktop\release\windows\av_libglesv2.dll
-B:\Gemma\GemmaDesktop\release\windows\libHarfBuzzSharp.dll
-B:\Gemma\GemmaDesktop\release\windows\libSkiaSharp.dll
-B:\Gemma\GemmaDesktop\release\windows\GemmaCore.pdb
-B:\Gemma\GemmaDesktop\release\windows\GemmaDesktop.exe

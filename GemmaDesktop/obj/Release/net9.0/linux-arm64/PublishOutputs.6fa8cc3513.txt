@@ -1,5 +1,0 @@
-B:\Gemma\GemmaDesktop\release\linux-arm64\GemmaDesktop.pdb
-B:\Gemma\GemmaDesktop\release\linux-arm64\libHarfBuzzSharp.so
-B:\Gemma\GemmaDesktop\release\linux-arm64\libSkiaSharp.so
-B:\Gemma\GemmaDesktop\release\linux-arm64\GemmaCore.pdb
-B:\Gemma\GemmaDesktop\release\linux-arm64\GemmaDesktop
