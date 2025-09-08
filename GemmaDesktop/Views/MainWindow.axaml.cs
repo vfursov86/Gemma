@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using System.Threading.Tasks;
 
 namespace GemmaDesktop.Views;
 
@@ -17,6 +18,8 @@ public partial class MainWindow : Window
         InitializeComponent();
         _contextManager = new ContextManager();
         _gemmaClient = new GemmaClient();
+
+        this.Loaded += async (_, _) => await InitializeAsync();
     }
 
     private async void OnSendClick(object sender, RoutedEventArgs e)
@@ -33,7 +36,6 @@ public partial class MainWindow : Window
             Close();
             return;
         }
-
 
         _contextManager.AddUserMessage(userMessage);
 
@@ -55,7 +57,6 @@ public partial class MainWindow : Window
         _contextManager.Save(); // Persist soulstack
         Close(); // Gracefully close the window
     }
-
 
     private void AddMessage(string sender, string text)
     {
@@ -83,4 +84,34 @@ public partial class MainWindow : Window
 
         ChatPanel.Children.Add(block);
     }
+
+    private async Task InitializeAsync()
+    {
+        if (!await _gemmaClient.IsOllamaRunningAsync())
+        {
+            await ShowErrorAndExit("❌ Ollama is not running on localhost:11434.\nPlease start it with 'ollama serve'.");
+            return;
+        }
+        else
+        {
+            AddMessage("System", "✅ Ollama connection established.");
+        }
+
+        if (!await _gemmaClient.WarmUpAsync())
+        {
+            await ShowErrorAndExit("⚠️ Gemma did not respond to warm-up. Aborting.");
+            return;
+        }
+
+        AddMessage("System", "Gemma is warmed up and ready.");
+    }
+
+    private async Task ShowErrorAndExit(string message)
+    {
+        AddMessage("System", message);
+        await Task.Delay(3000); // Optional pause before exit
+        Close();
+    }
+
+
 }

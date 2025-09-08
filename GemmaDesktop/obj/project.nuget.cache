@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IiLKuLzVY8Y=",
+  "dgSpecHash": "XB+G+KMdI5I=",
   "success": true,
   "projectFilePath": "B:\\Gemma\\GemmaDesktop\\GemmaDesktop.csproj",
   "expectedPackageFiles": [
@@ -39,14 +39,11 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\tmds.dbus.protocol\\0.21.2\\tmds.dbus.protocol.0.21.2.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-arm64\\9.0.8\\microsoft.netcore.app.runtime.linux-arm64.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.8\\microsoft.netcore.app.runtime.win-x64.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\9.0.8\\microsoft.netcore.app.runtime.linux-x64.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-arm64\\9.0.8\\microsoft.aspnetcore.app.runtime.linux-arm64.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.8\\microsoft.aspnetcore.app.runtime.win-x64.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\9.0.8\\microsoft.aspnetcore.app.runtime.linux-x64.9.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm64\\9.0.8\\microsoft.netcore.app.host.linux-arm64.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\9.0.8\\microsoft.netcore.app.host.linux-x64.9.0.8.nupkg.sha512"
   ],
   "logs": []
