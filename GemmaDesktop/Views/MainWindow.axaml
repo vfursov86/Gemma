@@ -2,15 +2,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="GemmaDesktop.Views.MainWindow"
         Title="Gemma Desktop" Width="600" Height="800">
-  <DockPanel>
-    <TextBox x:Name="InputBox" DockPanel.Dock="Bottom" AcceptsReturn="True" Height="100"/>
-    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="5">
-        <Button Content="Send" Click="OnSendClick" Width="100" Margin="5"/>
-        <Button Content="Exit" Click="OnExitClick" Width="100" Margin="5"/>
-    </StackPanel>
 
-    <ScrollViewer>
+  <Grid RowDefinitions="*,Auto">
+    
+    <!-- Chat History -->
+    <ScrollViewer Grid.Row="0">
       <StackPanel x:Name="ChatPanel"/>
     </ScrollViewer>
-  </DockPanel>
+
+    <!-- Input + Buttons -->
+    <StackPanel Grid.Row="1" Margin="5">
+      <TextBox x:Name="InputBox"
+               AcceptsReturn="True"
+               TextWrapping="WrapWithOverflow"
+               ScrollViewer.VerticalScrollBarVisibility="Hidden"
+               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+               MinHeight="100"
+               MaxLines="5"
+               />
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+        <Button Content="Send" Click="OnSendClick" Width="100" Margin="5"/>
+        <Button Content="Exit" Click="OnExitClick" Width="100" Margin="5"/>
+      </StackPanel>
+    </StackPanel>
+
+  </Grid>
 </Window>
+
