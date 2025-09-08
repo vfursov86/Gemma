@@ -85,7 +85,7 @@ public class GemmaClient
         try
         {
             var reply = await SendAsync(warmupRequest);
-            Console.WriteLine($"🌞 Warm-up successful: {reply}");
+            //Console.WriteLine($"🌞 Warm-up successful: {reply}");
             return true;
         }
         catch (Exception ex)

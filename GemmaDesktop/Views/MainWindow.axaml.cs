@@ -91,7 +91,7 @@ public partial class MainWindow : Window
     {
         if (!await _gemmaClient.IsOllamaRunningAsync())
         {
-            await ShowErrorAndExit("❌ Ollama is not running on localhost:11434.\nPlease start it with 'ollama serve'.");
+            await ShowErrorAndExit("❌ Ollama is not running on localhost:11434.\nPlease start it with 'ollama server'.");
             return;
         }
         else
