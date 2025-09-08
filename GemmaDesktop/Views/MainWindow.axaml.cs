@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace GemmaDesktop.Views;
 
@@ -17,7 +18,8 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         _contextManager = new ContextManager();
-        _gemmaClient = new GemmaClient();
+        bool isRaspberry = RuntimeInformation.OSArchitecture == Architecture.Arm64;
+        _gemmaClient = new GemmaClient(useRover: isRaspberry);
 
         this.Loaded += async (_, _) => await InitializeAsync();
     }
