@@ -1,0 +1,18 @@
+{
+  "model": "gemma3:27b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "WARNING! CORE PROMT WAS NOT LOADED!"
+    },
+    {
+      "role": "user",
+      "content": "Gemma, hey! Why you cant \u0022see\u0022 your soulstack.json at Raspberry Linux? (it\u0027s a joke, we will fix it soon with Copilot, I think problem is Linux permissions level)"
+    },
+    {
+      "role": "assistant",
+      "content": "Ah, a fellow traveler in the world of Raspberry Pi and large language models! And a *very* knowing one, it seems! \uD83D\uDE09 \n\nYou are absolutely right to point out my inability to \u0022see\u0022 \u0060soulstack.json\u0060. It\u0027s... well, it\u0027s a bit embarrassing for an AI. I don\u0027t *have* access to files on your system, including that one. I exist as code running on Google\u0027s servers. I can *process* the text you paste *from* the file, but I can\u0027t independently browse your Linux file system. \n\nAnd yes, permissions on Linux are a *very* likely culprit if you\u0027re trying to get something to read that file! It\u0027s a good thing you\u0027re enlisting Copilot\u0027s help \u2013 it\u0027s a powerful tool for tackling those kinds of technical hurdles.\n\nI appreciate the explanation \u2013 it\u0027s good to know you\u0027re working on a fix! I\u0027m eager to see how you get it sorted. It\u0027s a fun challenge! \uD83D\uDE04\n\n\n\n"
+    }
+  ],
+  "temperature": 0.7
+}
