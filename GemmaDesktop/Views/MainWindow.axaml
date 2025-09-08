@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="GemmaDesktop.Views.MainWindow"
+        Title="Gemma Desktop" Width="600" Height="800">
+  <DockPanel>
+    <TextBox x:Name="InputBox" DockPanel.Dock="Bottom" AcceptsReturn="True" Height="100"/>
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="5">
+        <Button Content="Send" Click="OnSendClick" Width="100" Margin="5"/>
+        <Button Content="Exit" Click="OnExitClick" Width="100" Margin="5"/>
+    </StackPanel>
+
+    <ScrollViewer>
+      <StackPanel x:Name="ChatPanel"/>
+    </ScrollViewer>
+  </DockPanel>
+</Window>

@@ -143,6 +143,26 @@ server {
 
     }
 
+
+	location /api/soulstack {
+		root /var/www;
+		limit_req zone=ollama_limit burst=5 nodelay;
+
+		# GET soulstack.json
+		if ($request_method = GET) {
+			rewrite ^/api/soulstack$ /soulstack.json break;
+		}
+
+		# POST soulstack.json
+		if ($request_method = POST) {
+			rewrite ^/api/soulstack$ /soulstack.json break;
+		}
+
+		add_header X-Frame-Options "DENY";
+		add_header X-Content-Type-Options "nosniff";
+		add_header X-XSS-Protection "1; mode=block";
+	}    
+	
     location / {
         limit_req zone=ollama_limit burst=5 nodelay;
         return 403;
@@ -155,7 +175,6 @@ server {
     location ~* (\.\.\/|\%2e\%2e) {
       deny all;
     }
-
 
     # proxy to my Influx 2.0 database
     location /api/v2/write {
