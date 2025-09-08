@@ -5,6 +5,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace GemmaDesktop.Views;
 
@@ -13,6 +14,7 @@ public partial class MainWindow : Window
 
     private readonly ContextManager _contextManager;
     private readonly GemmaClient _gemmaClient;
+    private CancellationTokenSource _statusToken;
 
     public MainWindow()
     {
@@ -48,7 +50,9 @@ public partial class MainWindow : Window
             temperature = 0.7
         };
 
+        ShowThinkingStatus();
         var response = await _gemmaClient.SendAsync(request);
+        HideThinkingStatus();
 
         _contextManager.AddAssistantMessage(response);
         AddMessage("Gemma", response);
@@ -115,5 +119,25 @@ public partial class MainWindow : Window
         Close();
     }
 
+    private async void ShowThinkingStatus()
+    {
+        _statusToken?.Cancel();
+        _statusToken = new CancellationTokenSource();
+
+        var frames = new[] { "|", "/", "-", "\\" };
+        int i = 0;
+
+        while (!_statusToken.Token.IsCancellationRequested)
+        {
+            StatusLabel.Text = $"Gemma is answering... {frames[i++ % frames.Length]}";
+            await Task.Delay(200);
+        }
+    }
+
+    private void HideThinkingStatus()
+    {
+        _statusToken?.Cancel();
+        StatusLabel.Text = "";
+    }
 
 }

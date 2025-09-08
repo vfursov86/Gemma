@@ -1,17 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "wZwgK2KR5Ao=",
+  "dgSpecHash": "AqIvQs0EBqQ=",
   "success": true,
   "projectFilePath": "B:\\Gemma\\GemmaCore\\GemmaCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\google.protobuf\\3.27.1\\google.protobuf.3.27.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.deepdev.tokenizerlib\\1.3.3\\microsoft.deepdev.tokenizerlib.1.3.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.ml.tokenizers\\1.0.2\\microsoft.ml.tokenizers.1.0.2.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.8\\microsoft.net.illink.tasks.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\sharptoken\\2.0.3\\sharptoken.2.0.3.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-arm64\\9.0.8\\microsoft.netcore.app.runtime.linux-arm64.9.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-arm64\\9.0.8\\microsoft.aspnetcore.app.runtime.linux-arm64.9.0.8.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
   ],
   "logs": []
 }

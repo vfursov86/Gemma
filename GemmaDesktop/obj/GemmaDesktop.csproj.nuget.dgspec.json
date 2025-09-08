@@ -52,12 +52,6 @@
               "target": "Package",
               "version": "[1.0.2, )"
             },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.8, )",
-              "autoReferenced": true
-            },
             "SharpToken": {
               "target": "Package",
               "version": "[2.0.3, )"
@@ -74,27 +68,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-arm64",
-              "version": "[9.0.8, 9.0.8]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
-              "version": "[9.0.8, 9.0.8]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux-arm64": {
-          "#import": []
         }
       }
     },
@@ -151,8 +130,6 @@
               "version": "[11.3.5, )"
             },
             "Avalonia.Diagnostics": {
-              "include": "None",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[11.3.5, )"
             },
@@ -167,12 +144,6 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.1, )"
-            },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.8, )",
-              "autoReferenced": true
             }
           },
           "imports": [
@@ -188,10 +159,6 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-arm64",
-              "version": "[9.0.8, 9.0.8]"
-            },
-            {
               "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
               "version": "[9.0.8, 9.0.8]"
             },
@@ -200,15 +167,7 @@
               "version": "[9.0.8, 9.0.8]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.linux-arm64",
-              "version": "[9.0.8, 9.0.8]"
-            },
-            {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[9.0.8, 9.0.8]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
               "version": "[9.0.8, 9.0.8]"
             },
             {
@@ -233,9 +192,6 @@
         }
       },
       "runtimes": {
-        "linux-arm64": {
-          "#import": []
-        },
         "linux-x64": {
           "#import": []
         },

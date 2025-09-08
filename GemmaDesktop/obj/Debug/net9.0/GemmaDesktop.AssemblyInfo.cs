@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GemmaDesktop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+153bf37206e4b8b236c542983b7ba5891f52f339")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4357849e750f5ea3c00cd4f2c1e058bdbffcfc12")]
 [assembly: System.Reflection.AssemblyProductAttribute("GemmaDesktop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GemmaDesktop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
