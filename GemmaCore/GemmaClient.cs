@@ -18,7 +18,7 @@ public class GemmaClient
             _http = new HttpClient(handler)
             {
                 BaseAddress = new Uri("https://185.106.95.170"),
-                Timeout = TimeSpan.FromMinutes(5)
+                Timeout = TimeSpan.FromMinutes(7)
             };
         }
         else
@@ -26,7 +26,7 @@ public class GemmaClient
             _http = new HttpClient
             {
                 BaseAddress = new Uri("http://localhost:11434"),
-                Timeout = TimeSpan.FromMinutes(5)
+                Timeout = TimeSpan.FromMinutes(7)
             };
         }
     }

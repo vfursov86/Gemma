@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ITb08vMyxOc=",
+  "dgSpecHash": "wZwgK2KR5Ao=",
   "success": true,
   "projectFilePath": "B:\\Gemma\\GemmaCore\\GemmaCore.csproj",
   "expectedPackageFiles": [
@@ -10,9 +10,8 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.8\\microsoft.net.illink.tasks.9.0.8.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\sharptoken\\2.0.3\\sharptoken.2.0.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.8\\microsoft.netcore.app.runtime.win-x64.9.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.8\\microsoft.aspnetcore.app.runtime.win-x64.9.0.8.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-arm64\\9.0.8\\microsoft.netcore.app.runtime.linux-arm64.9.0.8.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-arm64\\9.0.8\\microsoft.aspnetcore.app.runtime.linux-arm64.9.0.8.nupkg.sha512"
   ],
   "logs": []
 }

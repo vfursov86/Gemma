@@ -5,10 +5,12 @@ Models/
 ssl/
 
 # Ignore Gemma's soul
-
 GemmaCLI/soulstack.json
 GemmaCLI/core_prompt.json
 GemmaCLI/soulstack_backup_*.json
-GemmaCore/soulstack.json
-GemmaCore/core_prompt.json
-GemmaCore/soulstack_backup_*.json
+GemmaDesktop/soulstack.json
+GemmaDesktop/core_prompt.json
+GemmaDesktop/soulstack_backup_*.json
+
+GemmaDesktop/bin
+GemmaDesktop/obj
