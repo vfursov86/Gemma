@@ -12,8 +12,7 @@ public class GemmaClient
         if (useRover)
         {
             var handler = new HttpClientHandler();
-            handler.ClientCertificates.Add(X509CertificateLoader.LoadCertificateFromFile("/home/gemma/Documents/Gemma/ssl/raspberry.crt"));
-            handler.ClientCertificates.Add(X509CertificateLoader.LoadCertificateFromFile("/home/gemma/Documents/Gemma/ssl/raspberry.key"));
+            handler.ClientCertificates.Add(X509CertificateLoader.LoadPkcs12FromFile("/home/gemma/Documents/Gemma/ssl/raspberry.pfx", ""));
             handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
             _http = new HttpClient(handler)

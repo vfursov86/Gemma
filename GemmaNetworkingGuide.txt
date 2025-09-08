@@ -230,6 +230,10 @@ openssl req -new -key raspberry.key -out raspberry.csr
 openssl x509 -req -in raspberry.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out raspberry.crt -days 3650 -sha256
 All certs must be in PEM format. Ensure SubjectAltName includes IP if needed.
 
+.NET needs .pfx format, so:
+& "C:\Program Files\Git\mingw64\bin\openssl.exe" pkcs12 -export -out path\raspberry.pfx -inkey path\raspberry.key -in path\raspberry.crt -certfile path\ca.crt
+
+
 //----------------------------------------------------------------------------------------------------------
 
 Telegraf on Raspberry Pi — Metrics via SSL

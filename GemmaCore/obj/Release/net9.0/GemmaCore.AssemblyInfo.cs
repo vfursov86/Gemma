@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GemmaCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da56389e0ad17294df51549c1b0f33e004d1380b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3016ed5f63c44e5f6457425e882fb3df276997dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("GemmaCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GemmaCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
