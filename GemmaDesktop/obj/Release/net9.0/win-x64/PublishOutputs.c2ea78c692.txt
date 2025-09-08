@@ -1,0 +1,6 @@
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\win-x64\publish\GemmaDesktop.pdb
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\win-x64\publish\av_libglesv2.dll
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\win-x64\publish\libHarfBuzzSharp.dll
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\win-x64\publish\libSkiaSharp.dll
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\win-x64\publish\GemmaCore.pdb
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\win-x64\publish\GemmaDesktop.exe

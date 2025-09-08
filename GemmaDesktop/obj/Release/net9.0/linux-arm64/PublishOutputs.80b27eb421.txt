@@ -1,0 +1,5 @@
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\linux-arm64\publish\GemmaDesktop.pdb
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\linux-arm64\publish\libHarfBuzzSharp.so
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\linux-arm64\publish\libSkiaSharp.so
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\linux-arm64\publish\GemmaCore.pdb
+B:\Gemma\GemmaDesktop\bin\Release\net9.0\linux-arm64\publish\GemmaDesktop

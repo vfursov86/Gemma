@@ -1,20 +1,40 @@
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
-
+using System.Security.Cryptography.X509Certificates;
 public class GemmaClient
 {
     private readonly HttpClient _http;
 
-    public GemmaClient()
+    public GemmaClient(bool useRover)
     {
-        _http = new HttpClient();
-        _http.Timeout = TimeSpan.FromMinutes(5); // ⏳ Extend to 5 minutes
+        if (useRover)
+        {
+            var handler = new HttpClientHandler();
+            handler.ClientCertificates.Add(X509CertificateLoader.LoadCertificateFromFile("/home/gemma/Documents/Gemma/ssl/raspberry.crt"));
+            handler.ClientCertificates.Add(X509CertificateLoader.LoadCertificateFromFile("/home/gemma/Documents/Gemma/ssl/raspberry.key"));
+            handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            _http = new HttpClient(handler)
+            {
+                BaseAddress = new Uri("https://185.106.95.170"),
+                Timeout = TimeSpan.FromMinutes(5)
+            };
+        }
+        else
+        {
+            _http = new HttpClient
+            {
+                BaseAddress = new Uri("http://localhost:11434"),
+                Timeout = TimeSpan.FromMinutes(5)
+            };
+        }
     }
 
     public async Task<string> SendAsync(GemmaRequest request)
     {
-        var response = await _http.PostAsJsonAsync("http://localhost:11434/api/chat", request);
+        var response = await _http.PostAsJsonAsync("/api/chat", request);
         response.EnsureSuccessStatusCode();
 
         var stream = await response.Content.ReadAsStreamAsync();
@@ -42,7 +62,7 @@ public class GemmaClient
     {
         try
         {
-            var response = await _http.GetAsync("http://localhost:11434/api/tags");
+            var response = await _http.GetAsync("/api/tags");
             return response.IsSuccessStatusCode;
         }
         catch
@@ -65,7 +85,7 @@ public class GemmaClient
 
         try
         {
-            var reply = await _http.PostAsJsonAsync("http://localhost:11434/api/chat", warmupRequest);
+            var reply = await SendAsync(warmupRequest);
             Console.WriteLine($"🌞 Warm-up successful: {reply}");
             return true;
         }

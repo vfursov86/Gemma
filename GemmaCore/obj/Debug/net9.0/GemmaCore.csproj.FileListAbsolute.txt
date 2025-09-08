@@ -1,12 +1,12 @@
+B:\Gemma\GemmaCore\bin\Debug\net9.0\GemmaCore.deps.json
+B:\Gemma\GemmaCore\bin\Debug\net9.0\GemmaCore.dll
+B:\Gemma\GemmaCore\bin\Debug\net9.0\GemmaCore.pdb
+B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.csproj.AssemblyReference.cache
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.GeneratedMSBuildEditorConfig.editorconfig
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.AssemblyInfoInputs.cache
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.AssemblyInfo.cs
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.csproj.CoreCompileInputs.cache
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.sourcelink.json
-B:\Gemma\GemmaCore\bin\Debug\net9.0\GemmaCore.deps.json
-B:\Gemma\GemmaCore\bin\Debug\net9.0\GemmaCore.dll
-B:\Gemma\GemmaCore\bin\Debug\net9.0\GemmaCore.pdb
-B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.csproj.AssemblyReference.cache
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.dll
 B:\Gemma\GemmaCore\obj\Debug\net9.0\refint\GemmaCore.dll
 B:\Gemma\GemmaCore\obj\Debug\net9.0\GemmaCore.pdb
